@@ -34,12 +34,16 @@ def get_section_info(section_id: str):
     print(ta1_name)
 
     # TODO
-    if section_id == "a":
+    if section_id == "a" or section_id == "b" or section_id == "c" or section_id == "d" :
+        time = RECITATION_HOURS[section_id]
+        times_split = time.split("~")
+        start = times_split[0]
+        end = times_split[1]
         return {
-            "section": "section_name",
-            "start_time": "HH:MM",
-            "end_time": "HH:MM",
-            "ta": ["taName1", "taName2"]
+            "section": section_id,
+            "start_time": start,
+            "end_time": end,
+            "ta": [ta1_name, ta2_name]
         }
     else:
         raise HTTPException(status_code=404, detail="Invalid section id")
